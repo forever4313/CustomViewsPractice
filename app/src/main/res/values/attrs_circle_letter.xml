@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleLetterView">
+        <attr name="letter_txt_size" format="dimension"/>
+        <attr name="letter_txt_color" format="color"/>
+        <attr name="letter_background_color" format="color"/>
+        <attr name="letter_txt" format="string"/>
+    </declare-styleable>
+
+
+</resources>
