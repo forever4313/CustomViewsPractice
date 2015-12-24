@@ -63,7 +63,6 @@ public class RiseNumberImplView extends TextView implements  IRiseNumberBase{
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 setText(animation.getAnimatedValue().toString());
-                System.out.println(animation.getAnimatedValue().toString() + "========");
                 if (animation.getAnimatedFraction() >= 1) {
                     status = STATUS_STOPED;
                     if (endListener != null) {
@@ -83,13 +82,13 @@ public class RiseNumberImplView extends TextView implements  IRiseNumberBase{
 
                 if (flag) {
                     String txt = StringUtils.formatFloat("#,###.00").format(Double.parseDouble(animation.getAnimatedValue().toString()));
-                    if(animation.getAnimatedValue().toString().compareTo(String.valueOf(endNumber))>=0){
+                    if(((double)animation.getAnimatedValue()) - endNumber >= 0){
                         txt = StringUtils.formatFloat("#,###.00").format(Double.parseDouble(String.valueOf(endNumber)));
                     }
                     setText(txt);
                 }else {
                     String txt = StringUtils.formatFloat("###.00").format(Double.parseDouble(animation.getAnimatedValue().toString()));
-                    if(animation.getAnimatedValue().toString().compareTo(String.valueOf(endNumber))>=0){
+                    if(((double)animation.getAnimatedValue()) - endNumber >= 0){
                         txt = StringUtils.formatFloat("###.00").format(Double.parseDouble(String.valueOf(endNumber)));
                     }
                     setText(txt);
