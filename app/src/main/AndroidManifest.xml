@@ -25,6 +25,12 @@
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
+        <activity
+            android:name=".activities.RiseNumberTestActivity"
+            android:label="@string/rise_number_anim_view"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
     </application>
 
 </manifest>
