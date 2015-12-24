@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:padding="50dp">
+        <com.k_beta.exercise.customviewspractice.widget.RiseNumberImplView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number1"
+            android:textSize="@dimen/font_normal"
+            tools:text="12.9"
+            android:textColor="@android:color/holo_blue_bright"/>
+        <com.k_beta.exercise.customviewspractice.widget.RiseNumberImplView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number2"
+            android:textSize="@dimen/font_normal"
+            tools:text="12.9"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/holo_green_light"/>
+        <com.k_beta.exercise.customviewspractice.widget.RiseNumberImplView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number3"
+            android:textSize="@dimen/font_normal"
+            tools:text="12.9"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/holo_red_light"/>
+        <com.k_beta.exercise.customviewspractice.widget.RiseNumberImplView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number4"
+            android:textSize="@dimen/font_normal"
+            tools:text="12.9"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/holo_purple"/>
+
+        <com.k_beta.exercise.customviewspractice.widget.RiseNumberImplView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number5"
+            android:textSize="@dimen/font_normal"
+            tools:text="12.9"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Run"
+            android:id="@+id/btn"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            />
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
