@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.k_beta.exercise.customviewspractice.activities.CircleLetterViewActivity;
+import com.k_beta.exercise.customviewspractice.activities.LoadingViewTestActivity;
 import com.k_beta.exercise.customviewspractice.activities.RiseNumberTestActivity;
 import com.k_beta.exercise.customviewspractice.widget.interf.RiseNumberEndListener;
 
@@ -53,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
     private void initListDatas() {
         data.add("① CircleLetterView");
         data.add("② RiseNumberView");
+        data.add("③ LoadingView");
         targetList.add(CircleLetterViewActivity.class.getName());
         targetList.add(RiseNumberTestActivity.class.getName());
+        targetList.add(LoadingViewTestActivity.class.getName());
     }
 
 

@@ -3,5 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="circle_letter_view">Circle Letter View</string>
     <string name="rise_number_anim_view">Rise Number TextView</string>
+    <string name="loadingview_str">LoadingView</string>
 
 </resources>

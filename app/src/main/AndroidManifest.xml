@@ -31,6 +31,12 @@
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
+        <activity
+            android:name=".activities.LoadingViewTestActivity"
+            android:label="@string/loadingview_str"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
     </application>
 
 </manifest>
