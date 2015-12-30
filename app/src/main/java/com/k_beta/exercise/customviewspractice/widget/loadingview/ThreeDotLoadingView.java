@@ -1,5 +1,6 @@
-package com.k_beta.exercise.customviewspractice.widget;
+package com.k_beta.exercise.customviewspractice.widget.loadingview;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,10 +12,16 @@ import android.view.View;
 
 import com.k_beta.exercise.customviewspractice.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by dongkai on 2015/12/29.
  */
 public class ThreeDotLoadingView extends View{
+
+
+    List<Animator> anims = new ArrayList<>();
     private int loadingViewColor = 0;
     private Paint mPaint ;
     private static int LOADING_ITEM_COUNT = 10;
@@ -25,7 +32,7 @@ public class ThreeDotLoadingView extends View{
     private static final int DEFAULT_VIEW_SIZE =45;
     public ThreeDotLoadingView(Context context) {
         super(context);
-        init(null,0);
+        init(null, 0);
     }
 
     public ThreeDotLoadingView(Context context, AttributeSet attrs) {
@@ -35,17 +42,19 @@ public class ThreeDotLoadingView extends View{
 
     public ThreeDotLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs, 0);
+        init(attrs, defStyleAttr);
     }
 
     public ThreeDotLoadingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs, 0);
+        init(attrs, defStyleAttr);
     }
 
     public void setLoadingViewColor(int loadingViewColor) {
         this.loadingViewColor = loadingViewColor;
     }
+
+
 
     private void init(AttributeSet attrs, int defStyleRes) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.loadingViewStyle);
@@ -63,7 +72,7 @@ public class ThreeDotLoadingView extends View{
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = resolveSize(dp2px(DEFAULT_VIEW_SIZE), widthMeasureSpec);
         int height = resolveSize(dp2px(DEFAULT_VIEW_SIZE), heightMeasureSpec);
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
     }
 
 
@@ -103,7 +112,18 @@ public class ThreeDotLoadingView extends View{
                 }
             });
             scaleAnim.start();
+            anims.add(scaleAnim);
         }
+    }
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        for(Animator ani:anims){
+            if(ani.isRunning()){
+                ani.end();
+            }
+        }
+        anims.clear();
     }
 
     private int dp2px(int dpValue) {

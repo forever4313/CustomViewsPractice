@@ -20,7 +20,6 @@ public class LoadingViewTestActivity extends AppCompatActivity {
         setContentView(R.layout.loading_view_activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 
 

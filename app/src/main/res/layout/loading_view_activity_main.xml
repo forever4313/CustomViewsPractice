@@ -22,9 +22,31 @@
         android:padding="50dp"
         android:background="@color/colorAccent"
         >
-        <com.k_beta.exercise.customviewspractice.widget.ThreeDotLoadingView
+        <com.k_beta.exercise.customviewspractice.widget.loadingview.ThreeDotLoadingView
+            android:id="@+id/loadingview1"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
+            app:loadingColor="@color/white"/>
+        <com.k_beta.exercise.customviewspractice.widget.loadingview.NineDotGridLoadingView
+            android:id="@+id/loadingview2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/loadingview1"
+            android:layout_marginTop="20dp"
+            app:loadingColor="@color/white"/>
+        <com.k_beta.exercise.customviewspractice.widget.loadingview.CircleLoadingView
+            android:id="@+id/loadingview3"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/loadingview2"
+            android:layout_marginTop="20dp"
+            app:loadingColor="@color/white"/>
+        <com.k_beta.exercise.customviewspractice.widget.loadingview.CircleLoadingView1
+            android:id="@+id/loadingview4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/loadingview3"
+            android:layout_marginTop="20dp"
             app:loadingColor="@color/white"/>
     </RelativeLayout>
 

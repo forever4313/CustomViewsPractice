@@ -4,7 +4,4 @@
     <declare-styleable name="loadingViewStyle">
         <attr name="loadingColor" format="color"></attr>
     </declare-styleable>
-
-
-
 </resources>
