@@ -48,6 +48,13 @@
             android:layout_below="@id/loadingview3"
             android:layout_marginTop="20dp"
             app:loadingColor="@color/white"/>
+        <com.k_beta.exercise.customviewspractice.widget.loadingview.CircleLoadingView2
+            android:id="@+id/loadingview5"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/loadingview4"
+            android:layout_marginTop="20dp"
+            app:loadingColor="@color/white"/>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
