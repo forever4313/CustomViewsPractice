@@ -1,7 +1,6 @@
 package com.k_beta.exercise.customviewspractice.widget.loadingview;
 
 import android.animation.Animator;
-import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,7 +10,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AnimationSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
 import com.k_beta.exercise.customviewspractice.R;
@@ -34,6 +34,7 @@ public class CircleLoadingView1 extends View{
     int start =0;
     int sweep = 0;
     int newStart = 0;
+    int repeatCount = 0;
     private static final int SWEEP_ALL = 330;
     //default size
     private static final int DEFAULT_VIEW_SIZE =45;
@@ -90,18 +91,16 @@ public class CircleLoadingView1 extends View{
         int y = radius+3;
         canvas.save();
         canvas.translate(x, y);
-        //canvas.rotate(rotation);
+        canvas.rotate(rotation);
         RectF rec = new RectF(-radius,-radius, radius, radius);
 
         if(isClockwise){
             start = newStart;
-            sweep = newStart+angle;
-
+            sweep = angle;
         }else{
-            start = newStart+angle;
+            start = (newStart+angle)%360;
             sweep = SWEEP_ALL-angle;
         }
-        System.out.println("=================="+start+"===="+sweep);
         canvas.drawArc(rec,start,sweep,false,mPaint);
         canvas.restore();
     }
@@ -110,6 +109,8 @@ public class CircleLoadingView1 extends View{
         ValueAnimator scaleAnim = ValueAnimator.ofInt(1, SWEEP_ALL);
         scaleAnim.setDuration(DURATION);
         scaleAnim.setRepeatCount(-1);//always repeat
+        AccelerateDecelerateInterpolator interpolator =  new AccelerateDecelerateInterpolator();
+        scaleAnim.setInterpolator(interpolator);
         scaleAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -121,9 +122,7 @@ public class CircleLoadingView1 extends View{
         scaleAnim.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                if (newStart + SWEEP_ALL >= 360) {
-                    newStart = newStart - 360;
-                }
+
             }
 
             @Override
@@ -138,24 +137,17 @@ public class CircleLoadingView1 extends View{
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-                if (isClockwise) {
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1"+newStart);
-
-                    if (newStart + SWEEP_ALL >= 360) {
-                        newStart = newStart - 360;
-                    }
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1"+newStart);
-
-                    isClockwise = false;
-                } else {
+                repeatCount++;
+                if (repeatCount % 2 == 0) {
                     isClockwise = true;
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2"+newStart);
-                    newStart = newStart + SWEEP_ALL;
-                    if (newStart >= 360) {
-                        newStart = newStart - 360;
+                    if (newStart + SWEEP_ALL >= 360) {
+                        newStart = newStart + SWEEP_ALL - 360;
+                    } else {
+                        newStart = newStart + SWEEP_ALL;
                     }
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2"+newStart);
 
+                } else {
+                    isClockwise = false;
                 }
             }
         });
@@ -163,7 +155,7 @@ public class CircleLoadingView1 extends View{
 
 
         ValueAnimator rotateAnim = ValueAnimator.ofInt(0, 360);
-        rotateAnim.setDuration(DURATION);
+        rotateAnim.setDuration(DURATION*2);
         rotateAnim.setRepeatCount(-1);//always repeat
         rotateAnim.setInterpolator(new LinearInterpolator());
         rotateAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
